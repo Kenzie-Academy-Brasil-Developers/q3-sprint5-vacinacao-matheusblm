@@ -7,7 +7,7 @@ from app.models.vaccine_model import VaccineModel
 
 
 def create_vaccine():
-    data = request.json()
+    data = request.get_json()
     try:
         for value in list(data.values()):
             if type (value) != str:
@@ -30,7 +30,7 @@ def create_vaccine():
     except TypeError:
       return jsonify(erro= "os valores devem ser strings"), 400
     except IntegrityError:
-      return jsonify(erro= "cpf em uso"), 409
+      return jsonify(erro= "cpf ja esta em uso"), 409
     except ValueError: 
       return jsonify(erro= "cpf deve conter 11 caracteres"), 400
     except KeyError:
