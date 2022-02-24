@@ -1,10 +1,9 @@
 
 
-from sqlite3 import IntegrityError
 from flask import jsonify, request, current_app
 
 from app.models.vaccine_model import VaccineModel
-
+from sqlalchemy.exc import IntegrityError
 
 def create_vaccine():
     data = request.get_json()
